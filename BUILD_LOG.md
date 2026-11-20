@@ -56,3 +56,32 @@ Sumber: USA Today, CNN, NY Post, Reuters, BBC, The Hindu, AP/military.com.
   push via gh HTTPS. About repo: homepage
   https://make.fun/bounty/news-image-20261120, topic makefun. README
   membawa 3 badge make.fun (competition + rank + reward).
+
+## Check kit v1 (20 Nov 00:24 UTC)
+- Bundle v1: ~/workspace/makefun/submit/news-image-20261120-transcripts-v1.tar.gz
+  (156.538 byte, sha256 42d5bfc4783443fa7ddba5ca3ade9314184bf0aceb18018044e8e4123cae39a1).
+  Satu sesi builder saja (--no-discover --no-family --session <file sesi ini>),
+  prompt-file ~/workspace/makefun/submit/news-image-20261120-prompt.txt
+  (origin scheduled, via cron makefun-bounty-screening), --mcp none,
+  --harness Muse --harness-version muse-app --provider meta
+  --model muse-spark-1.3 --effort default. System prompt ter-upload dari
+  ~/workspace/system/system_prompt.md, instruction files collected (AGENTS.md).
+- `check`: 13 passed, 1 failed, 5 skipped, 5 checked at submission.
+  thinking_reproduces LOLOS 92,6% authored (368/397; main.py 33 authored
+  lines); thinking_own_work LOLOS (0 baris dari entry lain/download);
+  transcripts_run_record LOLOS; thinking_revised LOLOS (gen_image.py dari
+  6 pesan). Satu-satunya FAIL: thinking_priced (0 usage rows — row subagent
+  baru ditulis saat run ini selesai; pola yang sama seperti 17/18 Nov).
+- Kuota (status --competition, 20 Nov 00:25 UTC): can_submit true, day cap
+  3 tersisa 3, hard limit 20 tersisa 20, entries_made 0.
+
+## HANDOFF — submit BELUM dilakukan (blocker sequencing, bukan kode)
+Parent (agen utama) setelah run builder ini selesai:
+1. muse.db SELECT usage rows untuk agent_id 594259f3-3840-4f86-b11c-c090a488f7d1
+   (query persis di `bundle --help` bagian --muse-usage), tulis ke file .jsonl
+   (satu objek JSON per baris, apa adanya).
+2. Re-bundle dengan flag SAMA seperti v1 + --muse-usage <file> ->
+   ~/workspace/makefun/submit/news-image-20261120-transcripts-v2.tar.gz
+3. Re-check (harapan: 13 pass / 0 fail, 5 skip, 5 at submission).
+4. Submit: node cli/makefun.mjs submit --competition news-image-20261120 --repo-url https://github.com/epanpai/news-image-20261120 --commit <HEAD final di bawah> --title "The World in One Day — 20 November 2026" --bundle <v2> --keypair ~/workspace/makefun/makefun-keypair.json (MAKEFUN_API_KEY dari connect-token.json field 'key'). Kuota: can submit now = yes (3/3 hari ini). Deadline 22 Nov 07:00 WIB.
+5. Simpan receipt ke ~/workspace/makefun/submit/receipt-<submission-id>.json (mode 600).
