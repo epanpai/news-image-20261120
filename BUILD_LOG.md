@@ -49,3 +49,10 @@ Sumber: USA Today, CNN, NY Post, Reuters, BBC, The Hindu, AP/military.com.
   copy via shutil.copyfileobj + verifikasi ulang sha256.
 - entry.png final: 126.460 byte, sha256
   b54cf1d2a2486502ae1cf9edd24744b7c13580b2e4849e4f0e1456653915b278.
+- main.py diuji dua kali (MAKEFUN_OUTPUT_DIR=/tmp/out1 dan /tmp/out2):
+  sha256 sama persis b54cf1d2…, DETERMINISTIC-OK.
+- Repo GitHub publik epanpai/news-image-20261120 dibuat 20 Nov 00:19:40Z
+  (setelah kompetisi buka 00:00Z), commit 61fe97bf4e2d75c63744866a7d91a9c7d2d87de4,
+  push via gh HTTPS. About repo: homepage
+  https://make.fun/bounty/news-image-20261120, topic makefun. README
+  membawa 3 badge make.fun (competition + rank + reward).
